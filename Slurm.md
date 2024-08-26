@@ -1,0 +1,22 @@
+> Notes from a lecture by Lorenzo Bosio
+
+- SLURM: Simple Linux Utility for Resource Management
+- Way to share computing power with many people
+- You login in a central node, which anyone can access. The other nodes are managed by Slurm.
+- The user has no admin rights, so you cannot change system packages, only run jobs.
+- Each job is automatically scheduled and distributed on what Slurm manages, and the division of tasks is queue-based.
+    - The queue is FIFO, First In First Out.
+    - You can give weights to jobs to make them run sooner.
+    - It can backfill the queue based on how much each job needs, so if at some point a job down the list can be filled in some tiny spot right now, it can be executed now to optimize resource usage.
+- It can manage also hardware requirements for different jobs, e.g. asking for GPUs or for a certain amount of memory.
+- It can detect if there are system (hardware) problems and redirect computing load to other healthy nodes.
+- You can have multiple slurm daemons active and they can take over each other if any of them fail.
+- Jobs can be shared between users, so all of them can access job control at once.
+- It can split a single machine into chunks if a job doesn't use the whole machine.
+- The admin decides "partitions", which are queues, which have access to some portion of resources.
+    - You can reserve queues for groups of users, plus set time limits for jobs, etc..
+    - `sinfo` gives you this information. Note that the same queue can show in multiple lines if there are some nodes active and some inactive.
+- New jobs are run with `srun`. You can ask for specific resources as you run the jobs.
+    - Slurm tends to split the load to as many machines as possible.
+- `sbatch` also runs commands, but takes a script with a particular header line (`#SBATCH ...`) with the runtime options. This lets you write a bunch on scripts and hardcode in what options you'd like.
+    - Slurm dumps the output of the script (stdout/stderr) to a logfile.

@@ -1,0 +1,51 @@
+> Speaker: Andrea Nuzzolese (CNR-ISTC) - andrea.nuzzolese@cnr.it
+
+- Data without metadata is useless: metadata is the pirate map to the golden tresure
+- data.europa.eu is a portal that gathers and centralizes open data from various national portals.
+    - The national paralogue is dati.gov.it
+- Interoperable data means having pieces of data that can be transparently put together.
+    - For example, I measure the length of trees. You also measure them, where you live. Our data is interoperable if we can transparently merge our datasets.
+- The five-stars open data model is a tier list of nothing-to-open data:
+    - 1 star: Use an open license.
+    - 2 stars: Use a structured format.
+    - 3 stars: Use an open format.
+    - 4 stars: Use URI inside the dataset (i.e. RDF).
+    - 5 stars: Be compatible to be linked with other data, or be already transparently link-able with other data.
+- All structured data can be converted in some way to RDF.
+    - A tool to do this is `RML`, which you can find at https://rml.io
+        - With RML you can write recipes from the CSV (or some other format) to the RDF representation, generating all triples accordingly.
+    - Another tool is SPARQL Anything
+
+- ~ Use `dcat` for MIMIR?
+
+- The European Interoperability Framework describes the levels of interoperability of data:
+    - Legal interoperability
+        - Can the data be integrated from a legal standpoint?
+    - Organizational interoperability
+        - Is the data sharing process and pipelines shared and agreed upon by all parties?
+        - ? This is the point I don't get.
+    - Semantic interoperability
+        - Are we using a shared ontology that describes the data?
+    - Technical interoperability
+        - Is there infrastructure that can be used to allow for integration?
+        - Is there a shared protocol to use to access the data that needs to be interoperable?
+- A little semantic goes a long way (Jim Hendler's hypothesis)
+    - We need very little semantics to cover a long portion of what we need
+        - Who - doing - what - where - to who - describe - when - how
+    - These questions are not random: they come from the concept of "competence questions". An ontology can be constructed from a series of questions that we want to answer in that context: when the ontology can answer all questions, it is complete (to that series of questions).
+- Tom Gruber is the first to talk about [[Ontologies]] in a formal way in computer science
+- "Graffoo" can be used to model owl [[Ontologies]] and RDF data in general: https://essepuntato.it/graffoo/
+- ? Can we tell the reasoner that some assertions are "stronger" than others?
+    - There are probabilistic reasoners
+    - An easy way to deal with this is to annotate assertions that are obvisouly correct so you ignore them when fixing inconsistencies
+- ? In a real ontology there are no named individuals, right? The individuals *are* the data.
+- ? We can extrapolate the data from the ontology, right?
+- There may be limits on what properties a class has
+    - A service MUST always be owned by someone
+        - You do this in Protege by selecting "SubClass of" in the annotations and adding an "Object restriction creator"
+        - This is an Existential Quantifier
+    - If someone OWNS anything, that anything MUST BE something
+        - You do this in the same way as before, but you then choose "Universal" in the bottom thingy. 
+        - This is an Universal Quantifier
+- https://prefix.cc can be used to find the URI of some RDF prefix, if you can't remember what it usually points to (e.g. what is the full URI of `foaf`?)
+- 
